@@ -3,7 +3,7 @@ function openSlider(image) {
   var sliderContent = slider.querySelector(".slider-content");
 
   sliderContent.src = image.src;
-  slider.style.display = "block";
+  slider.style.display = "flex";
 }
 
 // s

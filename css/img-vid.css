@@ -128,7 +128,6 @@ h4 {
 }
 /*-----слайдер фото-----*/
 .slider {
-  position: relative;
   display: none;
   position: fixed;
   top: 0;
@@ -137,17 +136,23 @@ h4 {
   height: 100%;
   background: #ffe4c4;
 }
-
-.slider-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90%;
-  display: block;
+.slider__wrapper {
+  margin: 50px auto;
+  max-width: 80%;
+  max-height: 80%;
+  display: flex;
+  position: relative;
 }
-
+@media (max-width: 1024px) {
+  .slider__wrapper {
+    max-width: 90%;
+    height: fit-content;
+  }
+}
+.slider-content {
+  width: 100%;
+  height: 100%;
+}
 @media (max-width: 768px) {
   .slider-content {
     max-width: 100%;
@@ -159,23 +164,51 @@ h4 {
 /*-----кнопка закрыть-----*/
 .closed-img {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
   border-radius: 50%;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: -35px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #750000;
-  background: #dd9e54;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/*-----стрелки слайдера-----*/
+.button-prev,
+.button-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #750000;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-.closed-img:hover {
   background: #750000;
-  color: #ffe4c4;
+  color: #fff;
+}
+.button-prev:hover,
+.button-next:hover {
+  background: #ffe4c4;
+  color: #750000;
+}
+.button-prev {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 50%;
+  left: -25px;
+}
+.button-next {
+  position: absolute;
+  top: 50%;
+  right: -25px;
 }
