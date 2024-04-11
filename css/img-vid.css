@@ -1,0 +1,10 @@
+body {
+  font-family: "Bahnschrift", "Josefin Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #ffe4c4;
+}
+.picture-page {
+  background: transparent;
+  height: 100dvh;
+}
