@@ -2,7 +2,13 @@ body {
   font-family: "Bahnschrift", "Josefin Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
-  background-color: #ffe4c4;
+  background: #ffe4c4;
+}
+h1,
+h2,
+h3 {
+  padding: 0;
+  margin: 0;
 }
 .picture-page {
   width: 100%;
@@ -18,14 +24,50 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 50px;
 }
 .picture-page__wrapper h1 {
-  font-size: 50px;
+  font-size: clamp(40px, 2vw, 50px);
   font-weight: 600;
   color: #750000;
 }
 .picture-page__wrapper h2 {
-  font-size: 40px;
+  font-size: clamp(35px, 2vw, 50px);
   font-weight: 400;
   color: #750000;
+}
+.picture-page__wrapper h3 {
+  font-size: clamp(25px, 5vw, 50px);
+  font-weight: 400;
+  color: #750000;
+  text-transform: uppercase;
+}
+.picture-page__arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+.picture-page__arrows img:hover {
+  transition: all 0.3s ease-in-out;
+}
+.picture-page__arrows img:hover {
+  opacity: 0.7;
+}
+/*-----стрелки-----*/
+.arr-left {
+  transform: rotate(180deg);
+}
+.picture-page__arrows img {
+  width: 80px;
+  height: 80px;
+}
+@media (max-width: 767px) {
+  .picture-page__arrows img {
+    width: 60px;
+    height: 60px;
+  }
+  .picture-page__arrows {
+    gap: 10px;
+  }
 }
