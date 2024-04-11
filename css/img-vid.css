@@ -17,7 +17,7 @@ h4 {
   height: 100dvh;
 }
 .picture-page__wrapper {
-  width: 100;
+  width: 100%;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -34,12 +34,12 @@ h4 {
 }
 .picture-page__wrapper h2 {
   font-size: clamp(35px, 5vw, 50px);
-  font-weight: 400;
+  font-weight: 300;
   color: #750000;
 }
 .picture-page__wrapper h3 {
   font-size: clamp(25px, 5vw, 50px);
-  font-weight: 400;
+  font-weight: 200;
   color: #750000;
   text-transform: uppercase;
 }
@@ -131,10 +131,17 @@ h4 {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
 }
-
 .slider-content {
   max-width: 100%;
   max-height: 100%;
   margin: auto;
   display: block;
+}
+@media (max-width: 768px) {
+  .slider-content {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto auto;
+    display: block;
+  }
 }
