@@ -5,6 +5,27 @@ body {
   background-color: #ffe4c4;
 }
 .picture-page {
+  width: 100%;
   background: transparent;
   height: 100dvh;
+}
+.picture-page__wrapper {
+  width: 100;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.picture-page__wrapper h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: #750000;
+}
+.picture-page__wrapper h2 {
+  font-size: 40px;
+  font-weight: 400;
+  color: #750000;
 }
