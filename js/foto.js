@@ -6,6 +6,10 @@ function openSlider(image) {
   slider.style.display = "block";
 }
 
-document.getElementById("slider").onclick = function () {
-  this.style.display = "none";
-};
+// s
+function closedSlider() {
+  var slider = document.getElementById("slider");
+  document.querySelector(".closed-img").onclick = function () {
+    slider.style.display = "none";
+  };
+}

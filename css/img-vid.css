@@ -145,9 +145,9 @@ h4 {
   transform: translate(-50%, -50%);
   max-width: 90%;
   max-height: 90%;
-  /* margin: auto; */
   display: block;
 }
+
 @media (max-width: 768px) {
   .slider-content {
     max-width: 100%;
@@ -157,3 +157,25 @@ h4 {
   }
 }
 /*-----кнопка закрыть-----*/
+.closed-img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #750000;
+  background: #dd9e54;
+  transition: all 0.3s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.closed-img:hover {
+  background: #750000;
+  color: #ffe4c4;
+}
