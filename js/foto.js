@@ -1,115 +1,50 @@
-let currentImageIndex = 0;
 const images = document.querySelectorAll(".slider-image");
-const imageCount = images.length;
+const modal = document.querySelector(".modal");
+const modalImg = document.querySelector(".modal-img");
+const closeBtn = document.querySelector(".close");
 
-// function openSlider(image) {
-//   const overlay = document.createElement("div");
-//   overlay.className = "overlay";
+let currentImageIndex = 0;
 
-//   const prevButton = document.createElement("button");
-//   prevButton.className = "prevButton";
-//   prevButton.innerHTML = "◄";
-//   prevButton.addEventListener("click", showPreviousImage);
-//   overlay.appendChild(prevButton);
-
-//   const currentImage = document.createElement("img");
-//   currentImage.src = image.src;
-//   overlay.appendChild(currentImage);
-
-//   const nextButton = document.createElement("button");
-//   nextButton.className = "nextButton";
-//   nextButton.innerHTML = "►";
-//   nextButton.addEventListener("click", showNextImage);
-//   overlay.appendChild(nextButton);
-
-//   document.body.appendChild(overlay);
-
-//   document.addEventListener("keydown", handleKeyPress);
-// }
-
-// function showNextImage() {
-//   currentImageIndex = (currentImageIndex + 1) % imageCount;
-//   const currentImage = images[currentImageIndex];
-//   document.querySelector(".overlay img").src = currentImage.src;
-// }
-
-// function showPreviousImage() {
-//   currentImageIndex = (currentImageIndex - 1 + imageCount) % imageCount;
-//   const currentImage = images[currentImageIndex];
-//   document.querySelector(".overlay img").src = currentImage.src;
-// }
-
-// function handleKeyPress(e) {
-//   if (e.key === "ArrowRight") {
-//     showNextImage();
-//   } else if (e.key === "ArrowLeft") {
-//     showPreviousImage();
-//   }
-// }
-
-// document.querySelectorAll(".slider-image").forEach((image) => {
-//   image.addEventListener("click", () => openSlider(image));
-// });
-
-function closeSlider() {
-  const overlay = document.querySelector(".overlay");
-  document.body.removeChild(overlay);
-}
-
-function createCloseButton() {
-  const closeButton = document.createElement("button");
-  closeButton.className = "closeButton";
-  closeButton.innerHTML = "X";
-  closeButton.addEventListener("click", closeSlider);
-  document.querySelector(".overlay").appendChild(closeButton);
-}
-
-function openSlider(image) {
-  const overlay = document.createElement("div");
-  overlay.className = "overlay";
-
-  const prevButton = document.createElement("button");
-  prevButton.className = "prevButton";
-  prevButton.innerHTML = "◄";
-  prevButton.addEventListener("click", showPreviousImage);
-  overlay.appendChild(prevButton);
-
-  const currentImage = document.createElement("img");
-  currentImage.src = image.src;
-  overlay.appendChild(currentImage);
-
-  const nextButton = document.createElement("button");
-  nextButton.className = "nextButton";
-  nextButton.innerHTML = "►";
-  nextButton.addEventListener("click", showNextImage);
-  overlay.appendChild(nextButton);
-
-  document.body.appendChild(overlay);
-
-  document.addEventListener("keydown", handleKeyPress);
-
-  createCloseButton();
-}
-function showNextImage() {
-  currentImageIndex = (currentImageIndex + 1) % imageCount;
-  const currentImage = images[currentImageIndex];
-  document.querySelector(".overlay img").src = currentImage.src;
-}
-
-function showPreviousImage() {
-  currentImageIndex = (currentImageIndex - 1 + imageCount) % imageCount;
-  const currentImage = images[currentImageIndex];
-  document.querySelector(".overlay img").src = currentImage.src;
-}
-
-function handleKeyPress(e) {
-  if (e.key === "ArrowRight") {
-    showNextImage();
-  } else if (e.key === "ArrowLeft") {
-    showPreviousImage();
-  }
-}
-
-document.querySelectorAll(".slider-image").forEach((image) => {
-  image.addEventListener("click", () => openSlider(image));
+images.forEach((image, index) => {
+  image.addEventListener("click", () => {
+    currentImageIndex = index;
+    modalImg.src = image.src;
+    modal.style.display = "block";
+  });
 });
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (
+    modal.style.display === "block" &&
+    (e.key === "ArrowLeft" || e.key === "ArrowRight")
+  ) {
+    navigateImages(e.key);
+  }
+});
+
+document.querySelector(".prevBtn").addEventListener("click", () => {
+  navigateImages("ArrowLeft");
+});
+
+document.querySelector(".nextBtn").addEventListener("click", () => {
+  navigateImages("ArrowRight");
+});
+
+function navigateImages(direction) {
+  if (direction === "ArrowLeft") {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  } else {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  }
+  modalImg.src = images[currentImageIndex].src;
+}
